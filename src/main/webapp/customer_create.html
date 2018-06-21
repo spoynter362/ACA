@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Customer Create</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	
+<script src="js/angular_app_create.js"></script>	
+</head>
+<body>
+	<div ng-app="customerCreateApp" ng-controller="customerCreateCtrl">
+		<div class="container">
+			 
+			<nav class="navbar navbar-inverse navbar-static-top">
+				<p class="navbar-text">SP's Customer Management App</p>
+				<ul class="nav navbar-nav">
+					<li> 
+						<a href="customer_home.html">Home</a>
+					</li>	
+					<li> 
+						<a href="customer_add.html" >Create</a>
+					</li>																	
+				</ul>								
+			</nav>			
+			
+			<h5>Please enter all required data and press 'Create' to enter a new customer.</h5>
+			<h5>Press 'Clear' to reset input.</h5>
+			
+			<div class="customerAddPage">			
+				
+				<div class="header">
+					<button type="button" ng-click="createCustomer()" 
+						ng-disabled="isCreateCustomerDisabled"
+						class="btn btn-success"> <span class="glyphicon glyphicon-edit"></span>Create</button>
+					<button type="button" ng-click="clearCreate()" 
+						class="btn btn-warning"> <span class="glyphicon"></span>Clear</button>				
+					
+					<p> <span class="text-primary" id="createStatusId" ng-bind="createStatus"></span></p>
+				</div>				
+				
+				<table  class="customerCreate">						
+						<tr>							
+							<td>
+								<label>Name:</label><br>
+								<input name="newName" type="text" required ng-model="newCustomerName" ng-disabled="lock" size=40/>
+								<p><span class="text-primary" ng-bind="nameMessage"></span></p>
+							</td>							
+						</tr>						
+						<tr>							
+							<td>
+								<label>City:</label><br>
+								<input name="newCity" type="text" required ng-model="newCustomerCity" ng-disabled="lock" size=15/>
+								<p><span class="text-primary" ng-bind="cityMessage"></span></p>								
+							</td>
+						</tr>						
+						<tr>							
+							<td>
+								<input type="checkbox" required										
+										ng-model="newBigCustomer" 
+										ng-disabled="lock" />
+								<label>Big Customer</label><br>
+								<input type="checkbox" required										
+										ng-model="newGreenCustomer" 
+										ng-disabled="lock" />
+								<label>Green Customer</label><br>	
+								<input type="checkbox" required										
+										ng-model="newEnglishCustomer" 
+										ng-disabled="lock" />
+								<label>English Customer</label><br>															
+							</td>
+						</tr>
+						<tr>							
+							<td>
+								<label>Email:</label><br>
+								<input type="text" name="newEmail" 
+										ng-model="newCustomerEmail" 
+										ng-disabled="lock">
+								</input>
+								<input type="checkbox" 									
+										ng-model="newCustomerEmailOpt" 
+										ng-disabled="lock" />
+								<label>Opt In?</label><br>	
+								<p><span class="text-primary" ng-bind="emailMessage"></span></p>								
+							</td>
+						</tr>														
+				</table>				
+							
+			</div>
+			
+		</div>
+			
+	</div>
+
+</body>
+</html>
